@@ -11,3 +11,4 @@
 
 extern char getch_blocking(void);
 extern char getch_non_blocking(void);
+extern void calculate_pi(void);

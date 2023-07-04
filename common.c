@@ -2,6 +2,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <sys/time.h>
 #include "common.h"
 
 char getch_blocking(void)
@@ -54,4 +55,23 @@ char getch_non_blocking(void)
 		perror("getch() tcsetattr ~ICANON");
 
 	return buf;
+}
+
+void calculate_pi(void)
+{
+	struct timeval start_tv;
+	struct timeval end_tv;
+	gettimeofday(&start_tv, NULL);
+
+	double p16 = 1, pi = 0, precision = 100000000;	// pi calculate
+	for(int k = 0; k <= precision; k++)
+	{
+		pi += 1.0 / p16 * (4.0 / (8 * k + 1) - 2.0 / (8 * k + 4) - 1.0 / (8 * k + 5) - 1.0 / (8 * k + 6));
+		p16 *= 16;
+	}
+	printf("pi = %.9f\n", pi);
+
+	usleep(100 * 1000);										// 100 ms
+
+	gettimeofday(&end_tv, NULL);
 }
