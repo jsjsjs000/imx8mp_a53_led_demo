@@ -4,6 +4,6 @@ LDLIBS = -li2c -lpthread
 BUILD_PATH=build
 
 all: main.c
-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) main.c thread.c common.c parse_commands.c -o ${BUILD_PATH}/imx8_a53_js_led_demo.bin
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) main.c thread.c common.c parse_commands.c -o ${BUILD_PATH}/imx8mp_a53_led_demo.bin
 clean:
-	rm -f ${BUILD_PATH}/imx8_a53_js_led_demo.bin
+	rm -f ${BUILD_PATH}/imx8mp_a53_led_demo.bin
